@@ -4,3 +4,6 @@
 # Container data
 *-data/
 data/
+
+# Other
+.DS_Store
