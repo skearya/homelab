@@ -1,0 +1,21 @@
+(tinyauth_forwarder) {
+	forward_auth tinyauth:3000 {
+		uri /api/auth/caddy
+
+		copy_headers Remote-User Remote-Name Remote-Email Remote-Groups
+	}
+}
+
+auth.{$DOMAIN} {
+	reverse_proxy tinyauth:3000
+}
+
+id.{$DOMAIN} {
+	reverse_proxy pocket-id:1411
+}
+
+whoami.{$DOMAIN} {
+	import tinyauth_forwarder
+
+	reverse_proxy whoami:80
+}

@@ -1,0 +1,15 @@
+services:
+  tinyauth:
+    image: ghcr.io/steveiliop56/tinyauth:v5
+    container_name: tinyauth
+    restart: unless-stopped
+    environment:
+      - TINYAUTH_APPURL=https://auth.${DOMAIN?}
+      - TINYAUTH_OAUTH_PROVIDERS_POCKETID_CLIENTID=${TINYAUTH_OAUTH_PROVIDERS_POCKETID_CLIENTID?}
+      - TINYAUTH_OAUTH_PROVIDERS_POCKETID_CLIENTSECRET=${TINYAUTH_OAUTH_PROVIDERS_POCKETID_CLIENTSECRET?}
+      - TINYAUTH_OAUTH_PROVIDERS_POCKETID_AUTHURL=https://id.${DOMAIN?}/authorize
+      - TINYAUTH_OAUTH_PROVIDERS_POCKETID_TOKENURL=https://id.${DOMAIN?}/api/oidc/token
+      - TINYAUTH_OAUTH_PROVIDERS_POCKETID_USERINFOURL=https://id.${DOMAIN?}/api/oidc/userinfo
+      - TINYAUTH_OAUTH_PROVIDERS_POCKETID_REDIRECTURL=https://auth.${DOMAIN?}/api/oauth/callback/pocketid
+      - TINYAUTH_OAUTH_PROVIDERS_POCKETID_SCOPES=openid email profile groups
+      - TINYAUTH_OAUTH_PROVIDERS_POCKETID_NAME=Pocket ID

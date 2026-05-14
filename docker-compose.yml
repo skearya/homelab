@@ -1,0 +1,5 @@
+include:
+  - tinyauth/docker-compose.yml
+  - pocket-id/docker-compose.yml
+  - whoami/docker-compose.yml
+  - caddy/docker-compose.yml

@@ -1,0 +1,18 @@
+services:
+  pocket-id:
+    image: ghcr.io/pocket-id/pocket-id:v2
+    container_name: pocket-id
+    restart: unless-stopped
+    environment:
+      - APP_URL=https://id.${DOMAIN?}
+      - TRUST_PROXY=true
+    env_file:
+      - .env
+    volumes:
+      - ../data/pocket-id:/app/data
+    healthcheck:
+      test: ["CMD", "/app/pocket-id", "healthcheck"]
+      interval: 1m30s
+      timeout: 5s
+      retries: 2
+      start_period: 10s
