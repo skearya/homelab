@@ -8,7 +8,7 @@ reload-caddy:
     docker compose kill -sUSR1 caddy
 
 [confirm]
-clean:
+clean-data:
     rm -rf ./data
 
 [script("uv", "run", "--script")]
