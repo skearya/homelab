@@ -1,4 +1,4 @@
-up *args: make-folders
+up *args:
     docker compose up {{ args }}
 
 down *args:
