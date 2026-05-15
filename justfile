@@ -1,5 +1,5 @@
 reload-caddy:
-    docker compose kill -sUSR1 caddy
+    sudo docker compose kill -sUSR1 caddy
 
 [confirm]
 clean-data:
