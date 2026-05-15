@@ -1,0 +1,12 @@
+services:
+  glance:
+    image: glanceapp/glance
+    container_name: glance
+    restart: unless-stopped
+    environment:
+      - DOMAIN=${DOMAIN?}
+    env_file:
+      - .env
+    volumes:
+      - ./config:/app/config
+      - ./assets:/app/assets

@@ -1,0 +1,46 @@
+- name: Home
+  # Optionally, if you only have a single page you can hide the desktop navigation for a cleaner look
+  # hide-desktop-navigation: true
+  columns:
+    - size: small
+      widgets:
+        - type: server-stats
+          servers:
+            - type: local
+              name: Services
+
+        - type: calendar
+          first-day-of-week: monday
+
+    - size: full
+      widgets:
+        - type: split-column
+          widgets:
+            - type: monitor
+              cache: 1m
+              title: Infrastructure
+              sites:
+                - title: Pocket ID
+                  icon: assets/pocket-id.svg
+                  url: https://id.${DOMAIN}/
+                  check-url: http://pocket-id:1411
+
+                - title: Tinyauth
+                  icon: assets/tinyauth.png
+                  url: https://auth.${DOMAIN}/
+                  check-url: http://tinyauth:3000
+            - type: monitor
+              cache: 1m
+              title: Services
+              sites:
+                - title: Memos
+                  icon: assets/memos.webp
+                  url: https://memos.${DOMAIN}/
+                  check-url: http://memos:5230
+
+    - size: small
+      widgets:
+        - type: repository
+          repository: ${GITHUB_REPO}
+          token: ${GITHUB_PAT}
+          commits-limit: 10

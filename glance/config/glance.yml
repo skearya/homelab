@@ -1,0 +1,12 @@
+server:
+  proxied: true
+  base-url: https://${DOMAIN}/
+  assets-path: /app/assets
+
+branding:
+  logo-url: /assets/cat.svg
+  favicon-url: /assets/cat.svg
+
+pages:
+  # prettier-ignore
+  !include: home.yml

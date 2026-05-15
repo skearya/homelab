@@ -3,4 +3,5 @@ include:
   - pocket-id/docker-compose.yml
   - memos/docker-compose.yml
   - whoami/docker-compose.yml
+  - glance/docker-compose.yml
   - caddy/docker-compose.yml

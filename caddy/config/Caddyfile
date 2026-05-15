@@ -14,6 +14,12 @@ id.{$DOMAIN} {
 	reverse_proxy pocket-id:1411
 }
 
+{$DOMAIN} {
+	import tinyauth_forwarder
+
+	reverse_proxy glance:8080
+}
+
 whoami.{$DOMAIN} {
 	import tinyauth_forwarder
 
