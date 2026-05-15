@@ -1,9 +1,3 @@
-up *args:
-    docker compose up {{ args }}
-
-down *args:
-    docker compose down {{ args }}
-
 reload-caddy:
     docker compose kill -sUSR1 caddy
 
