@@ -26,6 +26,12 @@ whoami.{$DOMAIN} {
 	reverse_proxy whoami:80
 }
 
+beszel.${DOMAIN} {
+	import tinyauth_forwarder
+
+	reverse_proxy beszel:8090
+}
+
 memos.{$DOMAIN} {
 	import tinyauth_forwarder
 
