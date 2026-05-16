@@ -1,6 +1,7 @@
 include:
   - ./beszel/docker-compose.yml
   - ./caddy/docker-compose.yml
+  - ./copyparty/docker-compose.yml
   - ./glance/docker-compose.yml
   - ./memos/docker-compose.yml
   - ./pocket-id/docker-compose.yml

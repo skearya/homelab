@@ -1,0 +1,19 @@
+services:
+  copyparty:
+    image: copyparty/ac:latest
+    container_name: copyparty
+    restart: unless-stopped
+    stop_grace_period: 15s
+    user: 1000:1000
+    volumes:
+      - ./config:/cfg
+      - ../share/public:/public
+      - ../share/private:/private
+      - ../share/downloads:/downloads
+      - ../share/music:/music
+    healthcheck:
+      test: ["CMD-SHELL", "wget --spider -q 127.0.0.1:3923/?reset=/._"]
+      interval: 1m
+      timeout: 2s
+      retries: 5
+      start_period: 15s

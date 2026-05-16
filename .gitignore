@@ -5,5 +5,8 @@
 *-data/
 data/
 
+# User files/media
+share/
+
 # Other
 .DS_Store

@@ -6,6 +6,29 @@
 	}
 }
 
+# https://caddyserver.com/docs/caddyfile/directives/forward_auth
+(optional_tinyauth_forwarder) {
+	reverse_proxy tinyauth:3000 {
+		method GET
+		rewrite /api/auth/caddy
+
+		header_up X-Forwarded-Method {method}
+		header_up X-Forwarded-Uri {uri}
+
+		@good status 2xx
+		handle_response @good {
+			request_header Remote-User {rp.header.Remote-User}
+			request_header Remote-Name {rp.header.Remote-Name}
+			request_header Remote-Email {rp.header.Remote-Email}
+			request_header Remote-Groups {rp.header.Remote-Groups}
+		}
+
+		handle_response {
+			request_header -Remote-*
+		}
+	}
+}
+
 auth.{$DOMAIN} {
 	reverse_proxy tinyauth:3000
 }
@@ -36,4 +59,10 @@ memos.{$DOMAIN} {
 	import tinyauth_forwarder
 
 	reverse_proxy memos:5230
+}
+
+files.{$DOMAIN} {
+	import optional_tinyauth_forwarder
+
+	reverse_proxy copyparty:3923
 }
