@@ -1,8 +1,8 @@
 include:
-  - tinyauth/docker-compose.yml
-  - pocket-id/docker-compose.yml
-  - memos/docker-compose.yml
-  - whoami/docker-compose.yml
-  - glance/docker-compose.yml
-  - beszel/docker-compose.yml
-  - caddy/docker-compose.yml
+  - ./beszel/docker-compose.yml
+  - ./caddy/docker-compose.yml
+  - ./glance/docker-compose.yml
+  - ./memos/docker-compose.yml
+  - ./pocket-id/docker-compose.yml
+  - ./tinyauth/docker-compose.yml
+  - ./whoami/docker-compose.yml
