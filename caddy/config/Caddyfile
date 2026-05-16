@@ -66,3 +66,10 @@ files.{$DOMAIN} {
 
 	reverse_proxy copyparty:3923
 }
+
+wg.{$DOMAIN} {
+	import tinyauth_forwarder
+
+	reverse_proxy wg-easy:80
+	tls internal
+}

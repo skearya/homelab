@@ -6,4 +6,5 @@ include:
   - ./memos/docker-compose.yml
   - ./pocket-id/docker-compose.yml
   - ./tinyauth/docker-compose.yml
+  - ./wg-easy/docker-compose.yml
   - ./whoami/docker-compose.yml
