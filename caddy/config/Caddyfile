@@ -72,3 +72,9 @@ wg.{$DOMAIN} {
 
 	reverse_proxy wg-easy:80
 }
+
+transmission.{$DOMAIN} {
+	import tinyauth_forwarder
+
+	reverse_proxy gluetun:9091
+}
