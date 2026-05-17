@@ -13,3 +13,4 @@ services:
       - TINYAUTH_OAUTH_PROVIDERS_POCKETID_REDIRECTURL=https://auth.${DOMAIN?}/api/oauth/callback/pocketid
       - TINYAUTH_OAUTH_PROVIDERS_POCKETID_SCOPES=openid email profile groups
       - TINYAUTH_OAUTH_PROVIDERS_POCKETID_NAME=Pocket ID
+      - TINYAUTH_AUTH_SESSIONEXPIRY=2419200
