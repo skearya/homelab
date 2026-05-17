@@ -4,6 +4,7 @@ include:
   - ./copyparty/docker-compose.yml
   - ./glance/docker-compose.yml
   - ./gluetun/docker-compose.yml
+  - ./immich/docker-compose.yml
   - ./memos/docker-compose.yml
   - ./pocket-id/docker-compose.yml
   - ./slskd/docker-compose.yml

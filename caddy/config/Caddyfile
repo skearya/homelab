@@ -84,3 +84,9 @@ slskd.{$DOMAIN} {
 
 	reverse_proxy gluetun:5030
 }
+
+immich.{$DOMAIN} {
+	import tinyauth_forwarder
+
+	reverse_proxy immich:2283
+}
