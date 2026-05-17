@@ -1,6 +1,4 @@
 - name: Home
-  # Optionally, if you only have a single page you can hide the desktop navigation for a cleaner look
-  # hide-desktop-navigation: true
   columns:
     - size: small
       widgets:
@@ -9,34 +7,75 @@
             - type: local
               name: Services
 
+        - type: custom-api
+          title: VPN
+          cache: 1m
+          url: http://gluetun:8000/v1/publicip/ip
+          subrequests:
+            port:
+              url: http://gluetun:8000/v1/portforward
+          headers:
+            x-api-key: ${GLUETUN_API_KEY}
+          template: |
+            <a href="https://ipinfo.io/{{ .JSON.String "public_ip" }}" target="_blank"><p class="size-h2 color-paragraph text-center">{{ .JSON.String "public_ip" }}</p></a>
+            <p class="size-h1 color-paragraph text-center">{{ (.Subrequest "port").JSON.String "port" }}</p>
+
         - type: calendar
           first-day-of-week: monday
 
     - size: full
       widgets:
-        - type: split-column
-          widgets:
-            - type: monitor
-              cache: 1m
-              title: Infrastructure
-              sites:
-                - title: Pocket ID
-                  icon: assets/pocket-id.svg
-                  url: https://id.${DOMAIN}/
-                  check-url: http://pocket-id:1411
+        - type: monitor
+          cache: 1m
+          title: Infrastructure
+          sites:
+            - title: Pocket ID
+              icon: sh:pocket-id
+              url: https://id.${DOMAIN}/
+              check-url: http://pocket-id:1411
 
-                - title: Tinyauth
-                  icon: assets/tinyauth.png
-                  url: https://auth.${DOMAIN}/
-                  check-url: http://tinyauth:3000
-            - type: monitor
-              cache: 1m
-              title: Services
-              sites:
-                - title: Memos
-                  icon: assets/memos.webp
-                  url: https://memos.${DOMAIN}/
-                  check-url: http://memos:5230
+            - title: Tinyauth
+              icon: sh:tinyauth
+              url: https://auth.${DOMAIN}/
+              check-url: http://tinyauth:3000
+
+            - title: Gluetun
+              icon: sh:gluetun
+              check-url: http://gluetun:9999
+
+            - title: Beszel
+              icon: sh:beszel
+              url: https://beszel.${DOMAIN}/
+              check-url: http://beszel:8090
+
+            - title: Wireguard
+              icon: sh:wireguard
+              url: https://wg.${DOMAIN}/
+              check-url: http://wg-easy:80
+
+        - type: monitor
+          cache: 1m
+          title: Services
+          sites:
+            - title: Copyparty
+              icon: sh:copyparty
+              url: https://files.${DOMAIN}/
+              check-url: http://copyparty:3923
+
+            - title: Memos
+              icon: sh:memos
+              url: https://memos.${DOMAIN}/
+              check-url: http://memos:5230
+
+            - title: slskd
+              icon: sh:slskd
+              url: https://slskd.${DOMAIN}/
+              check-url: http://gluetun:5030
+
+            - title: Transmission
+              icon: sh:transmission
+              url: https://transmission.${DOMAIN}/
+              check-url: http://gluetun:9091
 
     - size: small
       widgets:

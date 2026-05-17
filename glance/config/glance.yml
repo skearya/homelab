@@ -8,5 +8,4 @@ branding:
   favicon-url: /assets/cat.svg
 
 pages:
-  # prettier-ignore
-  !include: home.yml
+  - $include: home.yml

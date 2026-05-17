@@ -5,6 +5,7 @@ services:
     restart: unless-stopped
     environment:
       - DOMAIN=${DOMAIN?}
+      - GLUETUN_API_KEY=${GLUETUN_API_KEY?}
     env_file:
       - .env
     volumes:
