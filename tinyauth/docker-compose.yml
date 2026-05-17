@@ -6,6 +6,8 @@ services:
     environment:
       - TINYAUTH_APPURL=https://auth.${DOMAIN?}
       - TINYAUTH_UI_TITLE=${TINYAUTH_NAME?}
+      - BACKGROUND_IMAGE=/resources/background.png
+
       - TINYAUTH_OAUTH_PROVIDERS_POCKETID_CLIENTID=${POCKETID_CLIENTID?}
       - TINYAUTH_OAUTH_PROVIDERS_POCKETID_CLIENTSECRET=${POCKETID_CLIENTSECRET?}
       - TINYAUTH_OAUTH_PROVIDERS_POCKETID_AUTHURL=https://id.${DOMAIN?}/authorize
@@ -15,3 +17,5 @@ services:
       - TINYAUTH_OAUTH_PROVIDERS_POCKETID_SCOPES=openid email profile groups
       - TINYAUTH_OAUTH_PROVIDERS_POCKETID_NAME=${POCKET_ID_NAME?}
       - TINYAUTH_AUTH_SESSIONEXPIRY=2419200
+    volumes:
+      - ./config/background.png:/data/resources/background.png
