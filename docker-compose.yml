@@ -1,6 +1,7 @@
 include:
   - ./beszel/docker-compose.yml
   - ./caddy/docker-compose.yml
+  - ./community-fm/docker-compose.yml
   - ./copyparty/docker-compose.yml
   - ./glance/docker-compose.yml
   - ./gluetun/docker-compose.yml

@@ -1,0 +1,48 @@
+services:
+  community-fm-server:
+    image: ghcr.io/skearya/community.fm-server:latest
+    container_name: community.fm-server
+    restart: unless-stopped
+    stop_grace_period: 1s
+    environment:
+      - MODE
+      - STREAM_BASE_URL
+      - DISCORD_BOT_TOKEN
+      - DISCORD_TEST_GUILD
+      - YOUTUBE_PLAYLIST_ID
+    volumes:
+      - ${DATA_DIRECTORY}:/data:rw
+      - ${DOWNLOAD_DIRECTORY}:/downloads:rw
+      - ${LOCAL_MUSIC_DIRECTORY}:/music:ro
+      - ${STREAMRIP_CONFIG_PATH}:/home/nonroot/.config/streamrip/config.toml:ro
+  community-fm-icecast:
+    image: ghcr.io/libretime/icecast:2.4.4
+    container_name: community.fm-icecast
+    restart: unless-stopped
+    environment:
+      - ICECAST_SOURCE_PASSWORD
+      - ICECAST_RELAY_PASSWORD
+      - ICECAST_ADMIN_PASSWORD
+      - ICECAST_ADMIN_USERNAME
+      - ICECAST_ADMIN_EMAIL
+      - ICECAST_LOCATION
+      - ICECAST_HOSTNAME
+      - ICECAST_MAX_CLIENTS
+      - ICECAST_MAX_SOURCES
+    depends_on:
+      - community-fm-server
+  community-fm-liquidsoap:
+    image: ghcr.io/skearya/community.fm-liquidsoap:latest
+    container_name: community.fm-liquidsoap
+    restart: unless-stopped
+    ports:
+      - 8001:8001
+    environment:
+      - ICECAST_SOURCE_PASSWORD
+      - LIVE_SOURCE_USERNAME
+      - LIVE_SOURCE_PASSWORD
+    volumes:
+      - ${DOWNLOAD_DIRECTORY}:/downloads:rw
+      - ${LOCAL_MUSIC_DIRECTORY}:/music:ro
+    depends_on:
+      - community-fm-icecast

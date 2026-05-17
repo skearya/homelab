@@ -84,6 +84,11 @@
               url: https://immich.${DOMAIN}/
               check-url: http://immich:2283
 
+            - title: community.fm
+              icon: /assets/yeah.png
+              url: https://radio.${DOMAIN}/
+              check-url: http://community-fm-icecast:8000
+
     - size: small
       widgets:
         - type: repository

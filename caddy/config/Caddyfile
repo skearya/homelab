@@ -61,7 +61,7 @@ memos.{$DOMAIN} {
 	reverse_proxy memos:5230
 }
 
-files.{$DOMAIN} {
+files.{$DOMAIN}, discord.{$DOMAIN} {
 	import optional_tinyauth_forwarder
 
 	reverse_proxy copyparty:3923
@@ -86,7 +86,13 @@ slskd.{$DOMAIN} {
 }
 
 immich.{$DOMAIN} {
-	import tinyauth_forwarder
+	reverse_proxy immich-server:2283
+}
 
-	reverse_proxy immich:2283
+listen.{$DOMAIN} {
+	reverse_proxy community-fm-icecast:8000
+}
+
+radio.{$DOMAIN} {
+	reverse_proxy community-fm-server:8080
 }
