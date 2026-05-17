@@ -11,11 +11,13 @@
           title: VPN
           cache: 1m
           url: http://gluetun:8000/v1/publicip/ip
+          headers:
+            x-api-key: ${GLUETUN_API_KEY}
           subrequests:
             port:
               url: http://gluetun:8000/v1/portforward
-          headers:
-            x-api-key: ${GLUETUN_API_KEY}
+              headers:
+                x-api-key: ${GLUETUN_API_KEY}
           template: |
             <a href="https://ipinfo.io/{{ .JSON.String "public_ip" }}" target="_blank"><p class="size-h2 color-paragraph text-center">{{ .JSON.String "public_ip" }}</p></a>
             <p class="size-h1 color-paragraph text-center">{{ (.Subrequest "port").JSON.String "port" }}</p>
