@@ -1,0 +1,20 @@
+services:
+  slskd:
+    image: slskd/slskd
+    container_name: slskd
+    restart: unless-stopped
+    network_mode: "service:gluetun"
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - SLSKD_REMOTE_CONFIGURATION=true
+      - SLSKD_DOWNLOADS_DIR=/music
+      - SLSKD_VPN=true
+      - SLSKD_VPN_PORT_FORWARDING=true
+      - SLSKD_VPN_GLUETUN_URL=http://localhost:8000
+      - SLSKD_VPN_GLUETUN_API_KEY=${GLUETUN_API_KEY?}
+    env_file:
+      - .env
+    volumes:
+      - ../data/slskd-data:/app
+      - ../share/music/downloads:/music

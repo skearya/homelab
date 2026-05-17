@@ -78,3 +78,9 @@ transmission.{$DOMAIN} {
 
 	reverse_proxy gluetun:9091
 }
+
+slskd.{$DOMAIN} {
+	import tinyauth_forwarder
+
+	reverse_proxy gluetun:5030
+}

@@ -6,6 +6,7 @@ include:
   - ./gluetun/docker-compose.yml
   - ./memos/docker-compose.yml
   - ./pocket-id/docker-compose.yml
+  - ./slskd/docker-compose.yml
   - ./tinyauth/docker-compose.yml
   - ./transmission/docker-compose.yml
   - ./wg-easy/docker-compose.yml
