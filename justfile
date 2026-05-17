@@ -8,6 +8,12 @@ make-compose:
 reload-caddy:
     sudo docker compose kill -sUSR1 caddy
 
+backup-env:
+    find . -name ".env" -type f | tar -cf env-backup.tar.gz -T -
+
+restore-env:
+    tar -xf env-backup.tar.gz
+
 [confirm]
 clean-data:
     sudo rm -rf ./data

@@ -6,8 +6,8 @@ services:
     environment:
       - DOMAIN=${DOMAIN?}
       - GLUETUN_API_KEY=${GLUETUN_API_KEY?}
-    env_file:
-      - .env
+      - GITHUB_REPO=${GITHUB_REPO?}
+      - GITHUB_PAT=${GITHUB_PAT?}
     volumes:
       - ./config:/app/config
       - ./assets:/app/assets

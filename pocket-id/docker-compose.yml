@@ -7,13 +7,13 @@ services:
       - PUID=1000
       - PGID=1000
       - APP_URL=https://id.${DOMAIN?}
+      - ENCRYPTION_KEY=${ENCRYPTION_KEY?}
       - TRUST_PROXY=true
+
       - UI_CONFIG_DISABLED=true
       - APP_NAME=${POCKET_ID_NAME?}
       - SESSION_DURATION=40320
       - ALLOW_USER_SIGNUPS=withToken
-    env_file:
-      - .env
     volumes:
       - ../data/pocket-id:/app/data
     healthcheck:

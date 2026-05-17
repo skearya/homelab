@@ -8,13 +8,13 @@ services:
       - PUID=1000
       - PGID=1000
       - SLSKD_REMOTE_CONFIGURATION=true
+      - SLSKD_SLSK_USERNAME=${SLSK_USERNAME?}
+      - SLSKD_SLSK_PASSWORD=${SLSK_PASSWORD?}
       - SLSKD_DOWNLOADS_DIR=/music
       - SLSKD_VPN=true
       - SLSKD_VPN_PORT_FORWARDING=true
       - SLSKD_VPN_GLUETUN_URL=http://localhost:8000
       - SLSKD_VPN_GLUETUN_API_KEY=${GLUETUN_API_KEY?}
-    env_file:
-      - .env
     volumes:
       - ../data/slskd-data:/app
       - ../share/music/downloads:/music
