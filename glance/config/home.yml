@@ -77,6 +77,11 @@
               url: https://transmission.${DOMAIN}/
               check-url: http://gluetun:9091
 
+            - title: Immich
+              icon: sh:immich
+              url: https://immich.${DOMAIN}/
+              check-url: http://immich:2283
+
     - size: small
       widgets:
         - type: repository
