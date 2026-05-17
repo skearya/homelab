@@ -82,7 +82,7 @@
             - title: Immich
               icon: sh:immich
               url: https://immich.${DOMAIN}/
-              check-url: http://immich:2283
+              check-url: http://immich-server:2283
 
             - title: community.fm
               icon: /assets/yeah.png
