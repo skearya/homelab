@@ -35,7 +35,7 @@
               check-url: http://pocket-id:1411
 
             - title: Tinyauth
-              icon: sh:tinyauth
+              icon: di:tinyauth
               url: https://auth.${DOMAIN}/
               check-url: http://tinyauth:3000
 
@@ -63,7 +63,7 @@
               check-url: http://copyparty:3923
 
             - title: Memos
-              icon: sh:memos
+              icon: di:memos
               url: https://memos.${DOMAIN}/
               check-url: http://memos:5230
 
