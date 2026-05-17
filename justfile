@@ -1,5 +1,5 @@
 make-folders:
-    docker compose config --format json | jq '.services[].volumes[]?.source' | grep -E "/(data|share)" | sort | xargs -p -I {} mkdir -p {}
+    docker compose config --format json | jq '.services[].volumes[]?.source' | grep -E "/(data|share)" | sort -u | xargs -p mkdir -p
 
 make-compose:
     echo "include:" > docker-compose.yml
