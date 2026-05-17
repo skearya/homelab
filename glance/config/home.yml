@@ -50,11 +50,6 @@
               url: https://beszel.${DOMAIN}/
               check-url: http://beszel:8090
 
-            - title: Wireguard
-              icon: sh:wireguard
-              url: https://wg.${DOMAIN}/
-              check-url: http://wg-easy:80
-
         - type: monitor
           cache: 1m
           title: Services
@@ -88,6 +83,11 @@
               icon: /assets/yeah.png
               url: https://radio.${DOMAIN}/
               check-url: http://community-fm-icecast:8000
+
+            - title: Wireguard
+              icon: sh:wireguard
+              url: https://wg.${DOMAIN}/
+              check-url: http://wg-easy:80
 
     - size: small
       widgets:
