@@ -5,6 +5,9 @@ services:
     restart: unless-stopped
     environment:
       APP_URL: https://beszel.${DOMAIN?}
+      AUTO_LOGIN: ${USER_EMAIL?}
+      USER_EMAIL: ${USER_EMAIL?}
+      USER_PASSWORD: ${USER_PASSWORD?}
     volumes:
       - ../data/beszel-data:/beszel_data
       - ../data/beszel-socket:/beszel_socket
