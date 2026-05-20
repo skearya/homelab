@@ -8,6 +8,7 @@ include:
   - ./immich/docker-compose.yml
   - ./memos/docker-compose.yml
   - ./pocket-id/docker-compose.yml
+  - ./rathole/docker-compose.yml
   - ./slskd/docker-compose.yml
   - ./tinyauth/docker-compose.yml
   - ./transmission/docker-compose.yml
