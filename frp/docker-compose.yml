@@ -1,0 +1,17 @@
+services:
+  frps:
+    image: snowdreamtech/frps:latest
+    container_name: frps
+    restart: unless-stopped
+    network_mode: host
+    configs:
+      - source: frps_config
+        target: /etc/frp/frps.toml
+
+configs:
+  frps_config:
+    content: |
+      bindPort = 7000
+
+      auth.method = "token"
+      auth.token = "${FRP_TOKEN}"
