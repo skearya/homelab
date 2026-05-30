@@ -1,4 +1,5 @@
 include:
+  - ./beammp/docker-compose.yml
   - ./beszel/docker-compose.yml
   - ./caddy/docker-compose.yml
   - ./community-fm/docker-compose.yml
