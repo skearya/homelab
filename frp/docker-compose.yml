@@ -14,4 +14,4 @@ configs:
       bindPort = 7000
 
       auth.method = "token"
-      auth.token = "${FRP_TOKEN}"
+      auth.token = "${FRP_TOKEN?}"
