@@ -96,3 +96,9 @@ listen.{$DOMAIN} {
 radio.{$DOMAIN} {
 	reverse_proxy community-fm-server:8080
 }
+
+navidrome.{$DOMAIN} {
+	import tinyauth_forwarder
+
+	reverse_proxy navidrome:4533
+}
