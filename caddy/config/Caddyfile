@@ -98,7 +98,9 @@ radio.{$DOMAIN} {
 }
 
 navidrome.{$DOMAIN} {
-	import tinyauth_forwarder
-
 	reverse_proxy navidrome:4533
+}
+
+feishin.{$DOMAIN} {
+	reverse_proxy feishin:9180
 }
