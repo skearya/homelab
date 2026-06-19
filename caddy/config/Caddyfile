@@ -98,5 +98,7 @@ radio.{$DOMAIN} {
 }
 
 search.{$DOMAIN} {
+	import tinyauth_forwarder
+
 	reverse_proxy fourget:80
 }
