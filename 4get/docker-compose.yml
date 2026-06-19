@@ -1,0 +1,8 @@
+services:
+  fourget:
+    image: luuul/4get:latest
+    container_name: 4get
+    restart: unless-stopped
+    environment:
+      - FOURGET_PROTO=http
+      - FOURGET_SERVER_NAME=search.${DOMAIN?}

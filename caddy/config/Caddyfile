@@ -97,10 +97,6 @@ radio.{$DOMAIN} {
 	reverse_proxy community-fm-server:8080
 }
 
-navidrome.{$DOMAIN} {
-	reverse_proxy navidrome:4533
-}
-
-feishin.{$DOMAIN} {
-	reverse_proxy feishin:9180
+search.{$DOMAIN} {
+	reverse_proxy fourget:80
 }
