@@ -8,6 +8,8 @@ services:
       - STREAM_BASE_URL
       - DISCORD_BOT_TOKEN
       - DISCORD_TEST_GUILD
+      - LASTFM_API_KEY
+      - LASTFM_SECRET
     volumes:
       - ${DATA_DIRECTORY}:/data:rw
       - ${DOWNLOAD_DIRECTORY}:/downloads:rw
