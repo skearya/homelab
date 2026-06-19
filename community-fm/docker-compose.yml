@@ -5,16 +5,17 @@ services:
     restart: unless-stopped
     stop_grace_period: 1s
     environment:
-      - MODE
       - STREAM_BASE_URL
       - DISCORD_BOT_TOKEN
       - DISCORD_TEST_GUILD
-      - YOUTUBE_PLAYLIST_ID
     volumes:
       - ${DATA_DIRECTORY}:/data:rw
       - ${DOWNLOAD_DIRECTORY}:/downloads:rw
       - ${LOCAL_MUSIC_DIRECTORY}:/music:ro
       - ${STREAMRIP_CONFIG_PATH}:/home/nonroot/.config/streamrip/config.toml:ro
+    configs:
+      - source: community-fm-config
+        target: /data/config.toml
   community-fm-icecast:
     image: ghcr.io/libretime/icecast:2.4.4
     container_name: community.fm-icecast
@@ -46,3 +47,24 @@ services:
       - ${LOCAL_MUSIC_DIRECTORY}:/music:ro
     depends_on:
       - community-fm-icecast
+
+configs:
+  community-fm-config:
+    content: |
+      [modes.youtube."DJ Mixes"]
+      playlist-id = "${YOUTUBE_PLAYLIST_ID?}"
+
+      [modes.last-fm."Weekly Top Tracks"]
+      period = "7day"
+
+      [modes.last-fm."Yearly Top Tracks"]
+      period = "12month"
+
+      [modes.channel."Liked Songs"]
+      channel-name = "liked-songs"
+
+      [modes.local."Local Songs"]
+      directory = "/music"
+
+      [modes.queue."Request Queue"]
+      autoswitch = true

@@ -5,11 +5,11 @@ services:
     restart: unless-stopped
     network_mode: host
     configs:
-      - source: frps_config
+      - source: frps-config
         target: /etc/frp/frps.toml
 
 configs:
-  frps_config:
+  frps-config:
     content: |
       bindPort = 7000
 

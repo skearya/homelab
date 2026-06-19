@@ -9,7 +9,6 @@ include:
   - ./gluetun/docker-compose.yml
   - ./immich/docker-compose.yml
   - ./memos/docker-compose.yml
-  - ./navidrome/docker-compose.yml
   - ./pocket-id/docker-compose.yml
   - ./slskd/docker-compose.yml
   - ./tinyauth/docker-compose.yml
