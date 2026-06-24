@@ -79,6 +79,11 @@
               url: https://immich.${DOMAIN}/
               check-url: http://immich-server:2283
 
+            - title: 4get
+              icon: /assets/4get.png
+              url: https://search.${DOMAIN}/
+              check-url: http://fourget:80
+
             - title: community.fm
               icon: /assets/yeah.png
               url: https://radio.${DOMAIN}/
