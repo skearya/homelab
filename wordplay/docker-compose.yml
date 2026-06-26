@@ -1,0 +1,7 @@
+services:
+  wordplay:
+    image: ghcr.io/skearya/wordplay2:latest
+    container_name: wordplay
+    restart: unless-stopped
+    environment:
+      - RUST_LOG=debug

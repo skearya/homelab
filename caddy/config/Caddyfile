@@ -102,3 +102,7 @@ search.{$DOMAIN} {
 
 	reverse_proxy fourget:80
 }
+
+wordplay.{$DOMAIN} {
+	reverse_proxy wordplay:3000
+}

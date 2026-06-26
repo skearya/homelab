@@ -16,3 +16,4 @@ include:
   - ./transmission/docker-compose.yml
   - ./wg-easy/docker-compose.yml
   - ./whoami/docker-compose.yml
+  - ./wordplay/docker-compose.yml
