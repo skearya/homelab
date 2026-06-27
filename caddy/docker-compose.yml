@@ -5,6 +5,7 @@ services:
     restart: unless-stopped
     environment:
       - DOMAIN=${DOMAIN?}
+      - WORDPLAY_DOMAIN=${WORDPLAY_DOMAIN?}
     ports:
       - 80:80
       - 443:443
