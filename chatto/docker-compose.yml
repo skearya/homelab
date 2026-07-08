@@ -35,9 +35,9 @@ services:
       PUID: "${PUID:-1000}"
       PGID: "${PGID:-1000}"
     depends_on:
-      nats:
+      chatto-nats:
         condition: service_healthy
-      livekit:
+      chatto-livekit:
         condition: service_healthy
     expose:
       - "4000"
