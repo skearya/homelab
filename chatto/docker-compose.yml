@@ -1,6 +1,7 @@
 services:
   chatto-nats:
     image: nats:latest
+    container_name: chatto-nats
     command: ["--jetstream", "--store_dir=/data", "--auth=${NATS_TOKEN}"]
     volumes:
       - ../data/chatto:/data
@@ -12,6 +13,7 @@ services:
 
   chatto-livekit:
     image: livekit/livekit-server:latest
+    container_name: chatto-livekit
     command:
       - --config
       - /etc/livekit.yaml
@@ -30,6 +32,7 @@ services:
 
   chatto-server:
     image: ghcr.io/chattocorp/chatto:latest
+    container_name: chatto-server
     env_file: .env
     environment:
       PUID: "${PUID:-1000}"
