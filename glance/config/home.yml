@@ -94,6 +94,11 @@
               url: https://wg.${DOMAIN}/
               check-url: http://wg-easy:80
 
+            - title: Chatto
+              icon: /assets/chatto.webp
+              url: https://chat.${DOMAIN}/
+              check-url: http://chatto-server:4000
+
     - size: small
       widgets:
         - type: repository
