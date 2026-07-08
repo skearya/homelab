@@ -106,3 +106,20 @@ search.{$DOMAIN} {
 {$WORDPLAY_DOMAIN}, wordplay.{$DOMAIN} {
 	reverse_proxy wordplay:3000
 }
+
+chat.{$DOMAIN} {
+	reverse_proxy chatto-server:4000 {
+		lb_policy round_robin
+
+		lb_try_duration 5s
+		fail_duration 30s
+
+		header_up X-Real-IP {remote_host}
+	}
+
+	encode gzip zstd
+}
+
+livekit.chat.{$DOMAIN} {
+	reverse_proxy chatto-livekit:7880
+}
