@@ -9,7 +9,7 @@ reload-caddy:
     sudo docker compose kill -sUSR1 caddy
 
 backup-env:
-    find . -name ".env" -o -path "./community-fm/config/config.toml" | tar -cf env-backup.tar.gz -T -
+    find . -name ".env" -o -path "./community-fm/config/config.toml" -o -path "./chatto/livekit.generated.yaml" | tar -cf env-backup.tar.gz -T -
 
 restore-env:
     tar -xf env-backup.tar.gz
