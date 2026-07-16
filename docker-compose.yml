@@ -13,6 +13,7 @@ include:
   - ./memos/docker-compose.yml
   - ./pocket-id/docker-compose.yml
   - ./slskd/docker-compose.yml
+  - ./stalwart/docker-compose.yml
   - ./tinyauth/docker-compose.yml
   - ./transmission/docker-compose.yml
   - ./wg-easy/docker-compose.yml

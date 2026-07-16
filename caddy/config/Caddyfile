@@ -123,3 +123,11 @@ chat.{$DOMAIN} {
 livekit.chat.{$DOMAIN} {
 	reverse_proxy chatto-livekit:7880
 }
+
+mail.{$DOMAIN} {
+	reverse_proxy stalwart:443
+}
+
+config.mail.{$DOMAIN} {
+	reverse_proxy stalwart:8080
+}
