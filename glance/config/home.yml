@@ -99,6 +99,10 @@
               url: https://chat.${DOMAIN}/
               check-url: http://chatto-server:4000
 
+            - title: Stalwart
+              icon: sh:stalwart
+              url: https://email.${DOMAIN}/
+              check-url: http://stalwart:8080
     - size: small
       widgets:
         - type: repository
