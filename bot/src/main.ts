@@ -76,11 +76,7 @@ client.on(Events.InteractionCreate, async (interaction) => {
     const content =
       "There was an error while executing this command, more information has been logged.";
 
-    if (
-      interaction.replied || interaction.deferred
-        ? interaction.followUp
-        : interaction.reply
-    ) {
+    if (interaction.replied || interaction.deferred) {
       await interaction.followUp({ content });
     } else {
       await interaction.reply({ content });
