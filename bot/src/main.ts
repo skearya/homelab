@@ -64,9 +64,27 @@ client.on(Events.ClientReady, (readyClient) => {
 client.on(Events.InteractionCreate, async (interaction) => {
   if (!interaction.isChatInputCommand()) return;
 
-  switch (interaction.commandName) {
-    case "create-email":
-      await createEmail(interaction);
+  try {
+    switch (interaction.commandName) {
+      case "create-email":
+        await createEmail(interaction);
+        break;
+    }
+  } catch (error) {
+    console.error(error);
+
+    const content =
+      "There was an error while executing this command, more information has been logged.";
+
+    if (
+      interaction.replied || interaction.deferred
+        ? interaction.followUp
+        : interaction.reply
+    ) {
+      await interaction.followUp({ content });
+    } else {
+      await interaction.reply({ content });
+    }
   }
 });
 
@@ -136,10 +154,14 @@ async function createEmail(interaction: ChatInputCommandInteraction) {
   const data = await res.json();
 
   console.log(
-    `API Response for '${interaction.user.username}' with '${prefix}: ${JSON.stringify(data)}`,
+    `API response for '${interaction.user.username}' with '${prefix}: ${JSON.stringify(data)}`,
   );
 
-  if (!res.ok) return;
+  const [_type, info, _id] = data["methodResponses"][0];
+
+  if (!("created" in info)) {
+    throw new Error(`Error creating email account?`);
+  }
 
   await interaction.reply({
     embeds: [
