@@ -143,7 +143,7 @@ async function createEmail(interaction: ChatInputCommandInteraction) {
         .setColor("Green")
         .setTitle("Account Created")
         .setDescription(
-          "Log into https://email.${DOMAIN}/ with these credentials and reset your password.",
+          `Log into https://email.${DOMAIN}/ with these credentials and reset your password.`,
         )
         .addFields(
           { name: "email", value: `${prefix}@${DOMAIN}` },
