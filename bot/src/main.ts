@@ -133,9 +133,13 @@ async function createEmail(interaction: ChatInputCommandInteraction) {
     body: JSON.stringify(body),
   });
 
+  const data = await res.json();
+
   console.log(
-    `API Response for '${interaction.user.username}' with '${prefix}: ${await res.json()}`,
+    `API Response for '${interaction.user.username}' with '${prefix}: ${JSON.stringify(data)}`,
   );
+
+  if (!res.ok) return;
 
   await interaction.reply({
     embeds: [
