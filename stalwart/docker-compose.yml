@@ -4,7 +4,7 @@ services:
     container_name: stalwart
     restart: unless-stopped
     environment:
-      - STALWART_PUBLIC_URL=https://mail.${DOMAIN?}
+      - STALWART_PUBLIC_URL=https://email.${DOMAIN?}
     ports:
       - 25:25
       - 587:587
