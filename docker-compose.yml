@@ -2,6 +2,7 @@ include:
   - ./4get/docker-compose.yml
   - ./beammp/docker-compose.yml
   - ./beszel/docker-compose.yml
+  - ./bot/docker-compose.yml
   - ./caddy/docker-compose.yml
   - ./chatto/docker-compose.yml
   - ./community-fm/docker-compose.yml
