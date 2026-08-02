@@ -4,20 +4,29 @@ services:
     container_name: community.fm-server
     restart: unless-stopped
     stop_grace_period: 1s
-    environment:
-      - STREAM_BASE_URL
-      - DISCORD_BOT_TOKEN
-      - DISCORD_TEST_GUILD
-      - LASTFM_API_KEY
-      - LASTFM_SECRET
+    env_file:
+      - .env
     volumes:
-      - ${DATA_DIRECTORY}:/data:rw
-      - ${DOWNLOAD_DIRECTORY}:/downloads:rw
-      - ${LOCAL_MUSIC_DIRECTORY}:/music:ro
-      - ${STREAMRIP_CONFIG_PATH}:/home/nonroot/.config/streamrip/config.toml:ro
+      - ../data/community-fm-data:/data:rw
+      - ../data/community-fm-downloads:/downloads:rw
+      - ../share/music/library:/music:ro
+      - ./config/config.toml:/root/.config/streamrip/config.toml:ro
     configs:
       - source: community-fm-config
-        target: /data/config.toml
+        target: /config/modes.toml
+  community-fm-liquidsoap:
+    image: ghcr.io/skearya/community.fm-liquidsoap:latest
+    container_name: community.fm-liquidsoap
+    restart: unless-stopped
+    ports:
+      - 8001:8001
+    environment:
+      - ICECAST_SOURCE_PASSWORD
+      - LIVE_SOURCE_USERNAME=${LIVE_SOURCE_USERNAME:-streamer}
+      - LIVE_SOURCE_PASSWORD
+    volumes:
+      - ../data/community-fm-downloads:/downloads:rw
+      - ../share/music/library:/music:ro
   community-fm-icecast:
     image: ghcr.io/libretime/icecast:2.4.4
     container_name: community.fm-icecast
@@ -32,23 +41,6 @@ services:
       - ICECAST_HOSTNAME
       - ICECAST_MAX_CLIENTS
       - ICECAST_MAX_SOURCES
-    depends_on:
-      - community-fm-server
-  community-fm-liquidsoap:
-    image: ghcr.io/skearya/community.fm-liquidsoap:latest
-    container_name: community.fm-liquidsoap
-    restart: unless-stopped
-    ports:
-      - 8001:8001
-    environment:
-      - ICECAST_SOURCE_PASSWORD
-      - LIVE_SOURCE_USERNAME
-      - LIVE_SOURCE_PASSWORD
-    volumes:
-      - ${DOWNLOAD_DIRECTORY}:/downloads:rw
-      - ${LOCAL_MUSIC_DIRECTORY}:/music:ro
-    depends_on:
-      - community-fm-icecast
 
 configs:
   community-fm-config:
