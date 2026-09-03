@@ -98,6 +98,11 @@
               icon: sh:stalwart
               url: https://email.${DOMAIN}/
               check-url: http://stalwart:8080
+
+            - title: Coder
+              icon: sh:coder-light
+              url: https://coder.${DOMAIN}/
+              check-url: http://coder:7080
     - size: small
       widgets:
         - type: repository
