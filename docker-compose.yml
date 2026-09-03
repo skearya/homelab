@@ -5,6 +5,7 @@ include:
   - ./bot/docker-compose.yml
   - ./caddy/docker-compose.yml
   - ./chatto/docker-compose.yml
+  - ./coder/docker-compose.yml
   - ./community-fm/docker-compose.yml
   - ./copyparty/docker-compose.yml
   - ./frp/docker-compose.yml

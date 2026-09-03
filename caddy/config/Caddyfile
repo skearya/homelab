@@ -127,3 +127,7 @@ livekit.chat.{$DOMAIN} {
 email.{$DOMAIN} {
 	reverse_proxy stalwart:8080
 }
+
+coder.{$DOMAIN} {
+	reverse_proxy coder:7080
+}
