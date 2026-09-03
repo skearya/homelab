@@ -3,6 +3,8 @@ services:
     # This MUST be stable for our documentation and
     # other automations.
     image: ${CODER_REPO:-ghcr.io/coder/coder}:${CODER_VERSION:-latest}
+    container_name: coder
+    restart: unless-stopped
     environment:
       CODER_PG_CONNECTION_URL: "postgresql://${POSTGRES_USER:-username}:${POSTGRES_PASSWORD:-password}@coder-database/${POSTGRES_DB:-coder}?sslmode=disable"
       CODER_HTTP_ADDRESS: "0.0.0.0:7080"
@@ -29,6 +31,8 @@ services:
     # Minimum supported version is 13.
     # More versions here: https://hub.docker.com/_/postgres
     image: "postgres:17"
+    container_name: coder-database
+    restart: unless-stopped
     # Uncomment the next two lines to allow connections to the database from outside the server.
     #ports:
     #  - "5432:5432"
