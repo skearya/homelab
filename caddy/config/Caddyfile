@@ -114,7 +114,5 @@ email.{$DOMAIN} {
 }
 
 coder.{$DOMAIN} {
-	import tinyauth_forwarder
-
 	reverse_proxy coder:7080
 }
