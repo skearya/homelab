@@ -117,6 +117,6 @@ coder.{$DOMAIN} {
 	reverse_proxy coder:7080
 }
 
-*.{$DOMAIN} {
+u.{$DOMAIN} {
 	reverse_proxy shlink:8080
 }
