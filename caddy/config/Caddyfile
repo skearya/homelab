@@ -121,6 +121,8 @@ u.{$DOMAIN} {
 	reverse_proxy shlink:8080
 }
 
-link.{$DOMAIN} {
+shorten.{$DOMAIN} {
+	import tinyauth_forwarder
+
 	reverse_proxy shlink-web:8080
 }

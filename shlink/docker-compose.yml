@@ -6,7 +6,11 @@ services:
     environment:
       - DEFAULT_DOMAIN=u.${DOMAIN?}
       - IS_HTTPS_ENABLED=true
+      - INITIAL_API_KEY=${SHLINK_API_KEY?}
   shlink-web:
     image: shlinkio/shlink-web-client:stable
     container_name: shlink-web
     restart: unless-stopped
+    environment:
+      - SHLINK_SERVER_URL=https://u.${DOMAIN?}
+      - SHLINK_SERVER_API_KEY=${SHLINK_API_KEY?}
