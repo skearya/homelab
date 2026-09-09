@@ -116,3 +116,7 @@ email.{$DOMAIN} {
 coder.{$DOMAIN} {
 	reverse_proxy coder:7080
 }
+
+*.{$DOMAIN} {
+	reverse_proxy shlink:8080
+}

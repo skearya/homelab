@@ -13,6 +13,7 @@ include:
   - ./immich/docker-compose.yml
   - ./memos/docker-compose.yml
   - ./pocket-id/docker-compose.yml
+  - ./shlink/docker-compose.yml
   - ./slskd/docker-compose.yml
   - ./stalwart/docker-compose.yml
   - ./tinyauth/docker-compose.yml
