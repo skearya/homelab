@@ -120,3 +120,7 @@ coder.{$DOMAIN} {
 u.{$DOMAIN} {
 	reverse_proxy shlink:8080
 }
+
+link.{$DOMAIN} {
+	reverse_proxy shlink-web:8080
+}
