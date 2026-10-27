@@ -3,8 +3,7 @@ services:
     image: seaduboi/broadcast-box:latest
     container_name: broadcast-box
     restart: unless-stopped
+    newtwork_mode: host
     environment:
       - INCLUDE_PUBLIC_IP_IN_NAT_1_TO_1_IP=yes
-      - UDP_MUX_PORT=8189
-    ports:
-      - "8189:8189/udp"
+      - HTTP_ADDRESS=127.0.0.1:8080
