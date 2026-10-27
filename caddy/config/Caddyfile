@@ -130,5 +130,5 @@ shorten.{$DOMAIN} {
 stream.{$DOMAIN} {
 	import tinyauth_forwarder
 
-	reverse_proxy broadcast-box:8080
+	reverse_proxy localhost:61121
 }

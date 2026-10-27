@@ -6,4 +6,4 @@ services:
     network_mode: host
     environment:
       - INCLUDE_PUBLIC_IP_IN_NAT_1_TO_1_IP=yes
-      - HTTP_ADDRESS=127.0.0.1:8080
+      - HTTP_ADDRESS=localhost:61121
