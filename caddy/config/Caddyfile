@@ -126,3 +126,9 @@ shorten.{$DOMAIN} {
 
 	reverse_proxy shlink-web:8080
 }
+
+stream.{$DOMAIN} {
+	import tinyauth_forwarder
+
+	reverse_proxy broadcast-box:8080
+}
